@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${poppins.variable} min-h-screen bg-[url('/whitebg.jpg')] dark:bg-[url('/blackbg.jpg')] bg-cover bg-center bg-no-repeat font-sans antialiased`}
+        className={`${poppins.variable} min-h-screen bg-[url('/whitebg.jpg')] dark:bg-[url('/blackbg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"

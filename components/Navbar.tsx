@@ -8,7 +8,7 @@ export function Navbar() {
       role="banner"
     >
       <nav
-        className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-12 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
       >
         <Link
