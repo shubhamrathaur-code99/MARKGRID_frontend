@@ -1,0 +1,24 @@
+{
+  "overview": {
+    "total_mentions": 1240,
+    "engagement_rate": "6.4%",
+    "sentiment_positive": 72,
+    "sentiment_neutral": 18,
+    "sentiment_negative": 10
+  },
+  "platform_distribution": [
+    { "platform": "Twitter", "mentions": 520 },
+    { "platform": "LinkedIn", "mentions": 310 },
+    { "platform": "Reddit", "mentions": 210 },
+    { "platform": "News", "mentions": 200 }
+  ],
+  "weekly_mentions": [
+    { "date": "Mon", "count": 120 },
+    { "date": "Tue", "count": 150 },
+    { "date": "Wed", "count": 180 },
+    { "date": "Thu", "count": 160 },
+    { "date": "Fri", "count": 220 },
+    { "date": "Sat", "count": 200 },
+    { "date": "Sun", "count": 210 }
+  ]
+}

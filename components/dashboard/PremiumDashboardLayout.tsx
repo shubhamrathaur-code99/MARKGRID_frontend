@@ -1,5 +1,6 @@
 "use client";
 
+import { type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { DashboardBackgroundLayer } from "./DashboardBackgroundLayer";
 import { FloatingSidebar } from "./FloatingSidebar";
@@ -24,7 +25,13 @@ const mainVariants = {
   },
 };
 
-export function PremiumDashboardLayout({ email }: { email: string }) {
+export function PremiumDashboardLayout({
+  email,
+  children,
+}: {
+  email: string;
+  children?: ReactNode;
+}) {
   return (
     <div className="relative min-h-screen">
       <DashboardBackgroundLayer />
@@ -40,42 +47,48 @@ export function PremiumDashboardLayout({ email }: { email: string }) {
               className="flex flex-col"
               role="main"
             >
-              <motion.section variants={sectionVariants} className="mt-0">
-                <HeroSection />
-              </motion.section>
-              <motion.section variants={sectionVariants} className="mt-12">
-                <h2 className="mb-6 text-xl font-medium text-neutral-900 dark:text-neutral-100">
-                  Key metrics
-                </h2>
-                <MetricWidgets />
-              </motion.section>
-              <motion.section variants={sectionVariants} className="mt-12">
-                <h2 className="mb-6 text-xl font-medium text-neutral-900 dark:text-neutral-100">
-                  Analytics
-                </h2>
-                <BentoAnalyticsGrid />
-              </motion.section>
-              <motion.section variants={sectionVariants} className="mt-12">
-                <h2 className="mb-6 text-xl font-medium text-neutral-900 dark:text-neutral-100">
-                  Live mentions
-                </h2>
-                <MentionsActivity />
-              </motion.section>
-              <motion.section variants={sectionVariants} className="mt-12">
-                <div className="mb-6 flex items-center justify-between">
-                  <h2 className="text-xl font-medium text-neutral-900 dark:text-neutral-100">
-                    Influencers & competitors
-                  </h2>
-                </div>
-                <div className="grid grid-cols-1 gap-8 xl:grid-cols-[420px_1fr] xl:items-stretch">
-                  <div className="h-full min-h-0">
-                    <InfluencersCard />
-                  </div>
-                  <div className="h-full min-h-0">
-                    <CompetitorInsights />
-                  </div>
-                </div>
-              </motion.section>
+              {children != null ? (
+                children
+              ) : (
+                <>
+                  <motion.section variants={sectionVariants} className="mt-0">
+                    <HeroSection />
+                  </motion.section>
+                  <motion.section variants={sectionVariants} className="mt-12">
+                    <h2 className="mb-6 text-xl font-medium text-neutral-900 dark:text-neutral-100">
+                      Key metrics
+                    </h2>
+                    <MetricWidgets />
+                  </motion.section>
+                  <motion.section variants={sectionVariants} className="mt-12">
+                    <h2 className="mb-6 text-xl font-medium text-neutral-900 dark:text-neutral-100">
+                      Analytics
+                    </h2>
+                    <BentoAnalyticsGrid />
+                  </motion.section>
+                  <motion.section variants={sectionVariants} className="mt-12">
+                    <h2 className="mb-6 text-xl font-medium text-neutral-900 dark:text-neutral-100">
+                      Live mentions
+                    </h2>
+                    <MentionsActivity />
+                  </motion.section>
+                  <motion.section variants={sectionVariants} className="mt-12">
+                    <div className="mb-6 flex items-center justify-between">
+                      <h2 className="text-xl font-medium text-neutral-900 dark:text-neutral-100">
+                        Influencers & competitors
+                      </h2>
+                    </div>
+                    <div className="grid grid-cols-1 gap-8 xl:grid-cols-[420px_1fr] xl:items-stretch">
+                      <div className="h-full min-h-0">
+                        <InfluencersCard />
+                      </div>
+                      <div className="h-full min-h-0">
+                        <CompetitorInsights />
+                      </div>
+                    </div>
+                  </motion.section>
+                </>
+              )}
             </motion.main>
           </div>
         </div>

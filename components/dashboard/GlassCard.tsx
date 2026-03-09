@@ -29,13 +29,14 @@ export function GlassCard({
   return (
     <Wrapper
       className={[
-        "rounded-2xl border border-white/10 ring-1 ring-white/10",
-        "bg-white/65 dark:bg-white/[0.08]",
-        "backdrop-blur-2xl",
-        "shadow-[0_30px_80px_rgba(0,0,0,0.35)]",
+        "rounded-2xl border border-black/5 bg-white/80",
+        "backdrop-blur-md",
+        "shadow-[0_4px_10px_rgba(15,23,42,0.05)]",
+        "dark:border-white/10 dark:bg-white/[0.08] dark:ring-1 dark:ring-white/10",
+        "dark:shadow-[0_30px_80px_rgba(0,0,0,0.35)]",
         noHover
           ? ""
-          : "transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_20px_60px_rgba(0,112,255,0.25)] dark:hover:shadow-[0_20px_60px_rgba(0,112,255,0.2)]",
+          : "transition-transform duration-200 ease-out hover:-translate-y-[3px] hover:shadow-[0_12px_30px_rgba(15,23,42,0.12)] dark:hover:shadow-[0_20px_60px_rgba(0,112,255,0.2)]",
         paddingClass,
         className,
       ].join(" ")}

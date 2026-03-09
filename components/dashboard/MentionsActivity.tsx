@@ -73,7 +73,7 @@ export function MentionsActivity() {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[640px]">
             <thead>
-              <tr className="border-b border-white/10 bg-white/10 dark:bg-white/5">
+              <tr className="border-b border-slate-200 bg-slate-50/80 dark:border-white/10 dark:bg-white/5">
                 <th className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                   Platform
                 </th>
@@ -101,7 +101,7 @@ export function MentionsActivity() {
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="border-b border-white/5 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
+                  className="border-b border-slate-100 transition-colors hover:bg-slate-50 dark:border-white/5 dark:hover:bg-white/5"
                 >
                   <td className="px-6 py-3 text-sm font-medium text-neutral-900 dark:text-neutral-100">
                     {row.platform}

@@ -19,7 +19,7 @@ import {
 const mainNav = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/brand-analysis", label: "Brand Analysis", icon: MessageSquare },
-  { href: "/dashboard/influencers", label: "Influencers", icon: UserCheck },
+  { href: "/seo", label: "SEO", icon: UserCheck },
   { href: "/dashboard/competitors", label: "Competitors", icon: Swords },
   { href: "/dashboard/campaigns", label: "Campaigns", icon: Megaphone },
   { href: "/dashboard/reports", label: "Reports", icon: FileBarChart },
@@ -88,8 +88,11 @@ function Section({
       <ul className="space-y-0.5">
         {items.map((item) => {
           const active =
-            pathname === item.href ||
-            (item.href !== "/dashboard" && pathname.startsWith(item.href));
+            item.href === "/dashboard"
+              ? pathname === "/dashboard" || pathname.startsWith("/dashboard/")
+              : item.href === "/seo"
+              ? pathname === "/seo" || pathname.startsWith("/seo")
+              : pathname === item.href || pathname.startsWith(item.href + "/");
           return (
             <li key={item.href}>
               <NavItem

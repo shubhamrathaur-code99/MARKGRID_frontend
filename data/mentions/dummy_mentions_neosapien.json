@@ -1,0 +1,36 @@
+{
+  "mentions": [
+    {
+      "platform": "Twitter",
+      "author": "@techfuture",
+      "text": "Neosapien is redefining AI productivity tools.",
+      "sentiment": "positive",
+      "date": "2026-01-21",
+      "link": "https://twitter.com/example"
+    },
+    {
+      "platform": "Reddit",
+      "author": "u/startupfounder",
+      "text": "Tried Neosapien yesterday and it feels like the future.",
+      "sentiment": "positive",
+      "date": "2026-01-20",
+      "link": "https://reddit.com/example"
+    },
+    {
+      "platform": "LinkedIn",
+      "author": "Sarah Kim",
+      "text": "Interesting productivity platform built around AI workflows.",
+      "sentiment": "neutral",
+      "date": "2026-01-18",
+      "link": "https://linkedin.com/example"
+    },
+    {
+      "platform": "Twitter",
+      "author": "@skeptic_dev",
+      "text": "Neosapien's pricing is too high for small teams.",
+      "sentiment": "negative",
+      "date": "2026-01-17",
+      "link": "https://twitter.com/example2"
+    }
+  ]
+}

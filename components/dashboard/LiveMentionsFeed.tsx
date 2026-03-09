@@ -56,7 +56,7 @@ const sentimentStyles: Record<Sentiment, string> = {
 export function LiveMentionsFeed() {
   return (
     <GlassCard noHover className="overflow-hidden p-0">
-      <div className="border-b border-black/10 px-5 py-4 dark:border-white/10">
+      <div className="border-b border-slate-200 px-5 py-4 dark:border-white/10">
         <h3 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
           Live Mentions Feed
         </h3>
@@ -67,7 +67,7 @@ export function LiveMentionsFeed() {
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px]">
           <thead>
-            <tr className="border-b border-black/10 bg-white/10 dark:border-white/10 dark:bg-white/5">
+            <tr className="border-b border-slate-200 bg-slate-50/80 dark:border-white/10 dark:bg-white/5">
               <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                 Platform
               </th>
@@ -92,7 +92,7 @@ export function LiveMentionsFeed() {
             {mentions.map((row, i) => (
               <tr
                 key={i}
-                className="border-b border-black/5 transition-all duration-300 hover:bg-black/5 dark:border-white/5 dark:hover:bg-white/5"
+                className="border-b border-slate-100 transition-all duration-300 hover:bg-slate-50 dark:border-white/5 dark:hover:bg-white/5"
               >
                 <td className="px-5 py-3 text-sm font-medium text-neutral-900 dark:text-neutral-100">
                   {row.platform}

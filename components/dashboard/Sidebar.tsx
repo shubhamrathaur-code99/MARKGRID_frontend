@@ -48,7 +48,7 @@ const sections = [
       { href: "/dashboard/brand", label: "Brand Mentions", icon: BarChart3 },
       { href: "/dashboard/engagement", label: "Social Engagement", icon: Share2 },
       { href: "/dashboard/audience", label: "Audience Insights", icon: Users },
-      { href: "/dashboard/influencers", label: "Influencer Analytics", icon: UserCheck },
+      { href: "/seo", label: "SEO", icon: UserCheck },
       { href: "/dashboard/content", label: "Content Performance", icon: FileText },
     ],
   },
@@ -175,7 +175,12 @@ export function Sidebar() {
               )}
               <ul className="space-y-0.5 px-2">
                 {section.items.map((item) => {
-                  const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
+                  const isActive =
+                    item.href === "/dashboard"
+                      ? pathname === "/dashboard" || pathname.startsWith("/dashboard/")
+                      : item.href === "/seo"
+                      ? pathname === "/seo" || pathname.startsWith("/seo")
+                      : pathname === item.href || pathname.startsWith(item.href + "/");
                   return (
                     <li key={item.href}>
                       <NavItem href={item.href} label={item.label} icon={item.icon} isActive={isActive} />

@@ -1,0 +1,166 @@
+{
+  "seo_overview": {
+    "organic_traffic": 42300,
+    "ranking_keywords": 3820,
+    "domain_authority": 61,
+    "backlinks": 12450,
+    "referring_domains": 1220,
+    "total_impressions": 185000
+  },
+  "site_health": {
+    "score": 87,
+    "status": "Good",
+    "errors": 12,
+    "warnings": 48,
+    "notices": 130
+  },
+  "top_keywords": [
+    {
+      "keyword": "AI productivity tools",
+      "position": 3,
+      "search_volume": 9800
+    },
+    {
+      "keyword": "workflow automation AI",
+      "position": 5,
+      "search_volume": 6200
+    },
+    {
+      "keyword": "AI task manager",
+      "position": 7,
+      "search_volume": 4100
+    }
+  ],
+  "keyword_opportunities": [
+    "AI workflow platform",
+    "automation workspace",
+    "AI productivity software"
+  ],
+  "traffic_trend": [
+    { "month": "Jan", "traffic": 21000 },
+    { "month": "Feb", "traffic": 24000 },
+    { "month": "Mar", "traffic": 30000 },
+    { "month": "Apr", "traffic": 42300 }
+  ],
+  "impressions_trend": [
+    { "month": "Jan", "impressions": 98000 },
+    { "month": "Feb", "impressions": 112000 },
+    { "month": "Mar", "impressions": 145000 },
+    { "month": "Apr", "impressions": 185000 }
+  ],
+  "traffic_trend_by_range": {
+    "last_7_days": [
+      { "label": "Day 1", "traffic": 2900 },
+      { "label": "Day 2", "traffic": 3100 },
+      { "label": "Day 3", "traffic": 3300 },
+      { "label": "Day 4", "traffic": 3600 },
+      { "label": "Day 5", "traffic": 3900 },
+      { "label": "Day 6", "traffic": 4100 },
+      { "label": "Day 7", "traffic": 4300 }
+    ],
+    "prev_7_days": [
+      { "label": "Day 1", "traffic": 2400 },
+      { "label": "Day 2", "traffic": 2500 },
+      { "label": "Day 3", "traffic": 2600 },
+      { "label": "Day 4", "traffic": 2700 },
+      { "label": "Day 5", "traffic": 2800 },
+      { "label": "Day 6", "traffic": 2900 },
+      { "label": "Day 7", "traffic": 3000 }
+    ],
+    "last_28_days": [
+      { "label": "Week 1", "traffic": 8200 },
+      { "label": "Week 2", "traffic": 9100 },
+      { "label": "Week 3", "traffic": 10200 },
+      { "label": "Week 4", "traffic": 14800 }
+    ],
+    "prev_28_days": [
+      { "label": "Week 1", "traffic": 6400 },
+      { "label": "Week 2", "traffic": 7000 },
+      { "label": "Week 3", "traffic": 7500 },
+      { "label": "Week 4", "traffic": 9300 }
+    ]
+  },
+  "impressions_trend_by_range": {
+    "last_7_days": [
+      { "label": "Day 1", "impressions": 11800 },
+      { "label": "Day 2", "impressions": 12400 },
+      { "label": "Day 3", "impressions": 13100 },
+      { "label": "Day 4", "impressions": 13800 },
+      { "label": "Day 5", "impressions": 14500 },
+      { "label": "Day 6", "impressions": 15200 },
+      { "label": "Day 7", "impressions": 16000 }
+    ],
+    "prev_7_days": [
+      { "label": "Day 1", "impressions": 9800 },
+      { "label": "Day 2", "impressions": 10200 },
+      { "label": "Day 3", "impressions": 10600 },
+      { "label": "Day 4", "impressions": 11000 },
+      { "label": "Day 5", "impressions": 11400 },
+      { "label": "Day 6", "impressions": 11800 },
+      { "label": "Day 7", "impressions": 12200 }
+    ],
+    "last_28_days": [
+      { "label": "Week 1", "impressions": 42000 },
+      { "label": "Week 2", "impressions": 48000 },
+      { "label": "Week 3", "impressions": 56000 },
+      { "label": "Week 4", "impressions": 69000 }
+    ],
+    "prev_28_days": [
+      { "label": "Week 1", "impressions": 36000 },
+      { "label": "Week 2", "impressions": 39000 },
+      { "label": "Week 3", "impressions": 41000 },
+      { "label": "Week 4", "impressions": 46000 }
+    ]
+  },
+  "competitor_comparison": [
+    { "name": "Neosapien", "traffic": 42300 },
+    { "name": "Competitor A", "traffic": 58000 },
+    { "name": "Competitor B", "traffic": 37000 }
+  ],
+  "seo_insights": [
+    "Organic traffic increased by 18% in the last month.",
+    "Neosapien ranks strongly for AI productivity keywords.",
+    "Competitors are gaining visibility in automation-related search terms."
+  ],
+  "seo_recommendations": [
+    "Create content targeting 'AI workflow platform'.",
+    "Build backlinks from technology blogs.",
+    "Optimize landing pages for automation-related keywords."
+  ],
+  "top_landing_pages": [
+    {
+      "url": "/",
+      "title": "Neosapien Home",
+      "organic_visits": 18200,
+      "top_keyword": "AI productivity tools"
+    },
+    {
+      "url": "/product",
+      "title": "Neosapien Platform",
+      "organic_visits": 12600,
+      "top_keyword": "workflow automation AI"
+    },
+    {
+      "url": "/blog/ai-task-manager",
+      "title": "AI Task Manager Guide",
+      "organic_visits": 6500,
+      "top_keyword": "AI task manager"
+    }
+  ],
+  "backlink_profile": {
+    "text_links": 8500,
+    "image_links": 2200,
+    "redirects": 450,
+    "top_referring_domains": [
+      { "domain": "techcrunch.com", "links": 38 },
+      { "domain": "producthunt.com", "links": 27 },
+      { "domain": "medium.com", "links": 54 }
+    ]
+  },
+  "keyword_groups": [
+    { "name": "Productivity", "keywords": 1450, "traffic": 23000 },
+    { "name": "Automation", "keywords": 980, "traffic": 15000 },
+    { "name": "Workflow", "keywords": 670, "traffic": 4300 }
+  ]
+}
+
