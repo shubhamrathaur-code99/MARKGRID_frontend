@@ -85,14 +85,11 @@ export function dedupeParagraphs(paragraphs: string[]): string[] {
   });
 }
 
-const MAX_WORDS_PER_BULLET = 18;
 const MAX_WORDS_SUMMARY_SENTENCES = 40; // 1–2 sentences, no hard cap on chars
 const MAX_KEY_POINTS = 7;
 const MAX_HIGHLIGHTS_ITEMS = 5;
 const MAX_BULLETS_PER_SUBSECTION = 7;
 const MAX_WORDS_PER_MERGED_BULLET = 40; // for "More" subsection: merge small bullets into fewer points
-const MAX_HIGHLIGHTS = 7;
-const MAX_BULLET_LENGTH = 280;
 
 function wordCount(text: string): number {
   return text.trim().replace(/\s+/g, " ").split(" ").filter(Boolean).length;
@@ -170,37 +167,6 @@ function splitIntoCompleteBullets(paragraphs: string[]): string[] {
   return result;
 }
 
-/**
- * Trim to max N words (legacy helper). Only used by formatSectionForUI.
- */
-function trimToWords(text: string, maxWords: number): string {
-  const trimmed = text.trim().replace(/\s+/g, " ");
-  if (!trimmed) return "";
-  const words = trimmed.split(" ");
-  if (words.length <= maxWords) return trimmed;
-  const slice = words.slice(0, maxWords).join(" ");
-  return slice.endsWith(".") ? slice : `${slice.trim()}…`;
-}
-
-/**
- * Split long text into short bullets (by sentence), each capped (legacy).
- */
-function toScannableBullets(text: string): string[] {
-  const trimmed = text.trim().replace(/\s+/g, " ");
-  if (!trimmed) return [];
-  const sentences = trimmed.split(/\.\s+/).filter(Boolean);
-  const result: string[] = [];
-  for (const s of sentences) {
-    const withPeriod = s.endsWith(".") ? s : `${s}.`;
-    if (withPeriod.split(" ").length <= MAX_WORDS_PER_BULLET) {
-      result.push(withPeriod.trim());
-    } else {
-      result.push(trimToWords(withPeriod, MAX_WORDS_PER_BULLET));
-    }
-  }
-  return result;
-}
-
 /** Extract stat-like phrases (numbers, $, %, milestones) from text. */
 function extractStats(text: string): string[] {
   const stats: string[] = [];
@@ -222,14 +188,8 @@ function extractStats(text: string): string[] {
       }
     }
   }
-  return [...new Set(stats)].slice(0, 6);
+  return Array.from(new Set(stats)).slice(0, 6);
 }
-
-export type FormattedSection = {
-  summary: string;
-  highlights: string[];
-  details: string[];
-};
 
 /**
  * UX content architect section: structured for cards, accordions, stat badges.
@@ -272,30 +232,6 @@ export function filterSectionByQuery(
       }))
       .filter((sub) => sub.bullets.length > 0),
   };
-}
-
-/**
- * Convert flat paragraphs into UI-friendly structure: summary, highlights (max 5-7), details.
- */
-export function formatSectionForUI(paragraphs: string[]): FormattedSection {
-  if (paragraphs.length === 0)
-    return { summary: "", highlights: [], details: [] };
-  const first = paragraphs[0].trim().replace(/\s+/g, " ");
-  let summary: string;
-  const restParagraphs: string[] = [];
-  if (first.length > MAX_BULLET_LENGTH) {
-    const parts = toScannableBullets(first);
-    summary = trimToWords(parts[0] ?? first, 30);
-    restParagraphs.push(...parts.slice(1));
-  } else {
-    summary = first.length > 200 ? trimToWords(first, 30) : first;
-  }
-  for (const p of paragraphs.slice(1)) {
-    restParagraphs.push(...toScannableBullets(p));
-  }
-  const highlights = restParagraphs.slice(0, MAX_HIGHLIGHTS);
-  const details = restParagraphs.slice(MAX_HIGHLIGHTS);
-  return { summary, highlights, details };
 }
 
 /**
