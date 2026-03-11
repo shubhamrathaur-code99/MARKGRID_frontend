@@ -1,15 +1,23 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getAuthToken } from "@/lib/auth-server";
+import { apiFetch } from "@/lib/api";
 import { PremiumDashboardLayout } from "../../components/dashboard/PremiumDashboardLayout";
 
-export default function DashboardPage() {
-  const authCookie = cookies().get("markgrid_auth");
-
-  if (!authCookie) {
+export default async function DashboardPage() {
+  const token = await getAuthToken();
+  if (!token) {
     redirect("/");
   }
 
-  const email = authCookie.value;
+  let username = "Account";
+  try {
+    const me = await apiFetch<{ username?: string }>("/api/me", { token });
+    if (me && typeof me.username === "string" && me.username.trim() !== "") {
+      username = me.username;
+    }
+  } catch {
+    // If /api/me fails, keep fallback label but stay on dashboard
+  }
 
-  return <PremiumDashboardLayout email={email} />;
+  return <PremiumDashboardLayout email={username} />;
 }

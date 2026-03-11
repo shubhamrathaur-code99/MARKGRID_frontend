@@ -1,17 +1,26 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getAuthToken } from "@/lib/auth-server";
+import { apiFetch } from "@/lib/api";
 import { PremiumDashboardLayout } from "../../../components/dashboard/PremiumDashboardLayout";
 import { MentionsList } from "../../../components/dashboard/MentionsList";
 import mentionsData from "../../../data/mentions/dummy_mentions_neosapien.json";
 
-export default function MentionsPage() {
-  const authCookie = cookies().get("markgrid_auth");
-
-  if (!authCookie) {
+export default async function MentionsPage() {
+  const token = await getAuthToken();
+  if (!token) {
     redirect("/");
   }
 
-  const email = authCookie.value;
+  let username = "Account";
+  try {
+    const me = await apiFetch<{ username?: string }>("/api/me", { token });
+    if (me && typeof me.username === "string" && me.username.trim() !== "") {
+      username = me.username;
+    }
+  } catch {
+    // keep fallback label
+  }
+
   const mentions = mentionsData.mentions as Array<{
     platform: string;
     author: string;
@@ -22,7 +31,7 @@ export default function MentionsPage() {
   }>;
 
   return (
-    <PremiumDashboardLayout email={email}>
+    <PremiumDashboardLayout email={username}>
       <section className="mt-0">
         <h1 className="mb-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
           Mentions

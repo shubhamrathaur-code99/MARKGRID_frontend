@@ -19,7 +19,7 @@ export default function LoginPage() {
     setIsSubmitting(true);
     try {
       const formData = new FormData(e.currentTarget);
-      const email = formData.get("email");
+      const username = formData.get("username");
       const password = formData.get("password");
 
       const response = await fetch("/api/login", {
@@ -27,14 +27,14 @@ export default function LoginPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (response.ok) {
         router.push("/dashboard");
       } else {
         const data = await response.json().catch(() => ({}));
-        setError(data.error ?? "Invalid email or password");
+        setError(data.error ?? "Invalid username or password");
       }
     } finally {
       setIsSubmitting(false);
@@ -72,17 +72,17 @@ export default function LoginPage() {
           >
             <div className="space-y-2">
               <label
-                htmlFor="email"
+                htmlFor="username"
                 className="block text-sm font-medium text-neutral-900 dark:text-neutral-100"
               >
-                Email
+                Username
               </label>
               <input
-                id="email"
-                type="email"
-                name="email"
-                autoComplete="email"
-                placeholder="you@company.com"
+                id="username"
+                type="text"
+                name="username"
+                autoComplete="username"
+                placeholder="Enter your username"
                 className="w-full rounded-lg border border-neutral-200 bg-white px-4 py-3 text-neutral-900 placeholder-neutral-500 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-400 dark:focus:border-primary dark:focus:ring-primary/20"
                 aria-required="true"
               />

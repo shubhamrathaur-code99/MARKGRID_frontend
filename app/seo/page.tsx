@@ -1,14 +1,24 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getAuthToken } from "@/lib/auth-server";
+import { apiFetch } from "@/lib/api";
 import { SeoLayout } from "@/components/dashboard/SeoLayout";
 
-export default function SeoPage() {
-  const authCookie = cookies().get("markgrid_auth");
-
-  if (!authCookie) {
+export default async function SeoPage() {
+  const token = await getAuthToken();
+  if (!token) {
     redirect("/");
   }
 
-  return <SeoLayout email={authCookie.value} />;
+  let username = "Account";
+  try {
+    const me = await apiFetch<{ username?: string }>("/api/me", { token });
+    if (me && typeof me.username === "string" && me.username.trim() !== "") {
+      username = me.username;
+    }
+  } catch {
+    // keep fallback label
+  }
+
+  return <SeoLayout email={username} />;
 }
 
