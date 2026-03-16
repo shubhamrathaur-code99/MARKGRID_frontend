@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search } from "lucide-react";
 import { DashboardBackgroundLayer } from "./DashboardBackgroundLayer";
 import { FloatingSidebar } from "./FloatingSidebar";
-import { GlobalUserControls } from "../global/GlobalUserControls";
+import { SeoTopBar } from "@/components/topbar/SeoTopBar";
+import { Dropdown } from "@/components/ui/Dropdown";
 import seoData from "@/data/seo/dummy_neosapien_seo.json";
 import { SeoOverview } from "@/components/seo/SeoOverview";
 import { ImpressionsTrafficChart } from "@/components/seo/ImpressionsTrafficChart";
@@ -23,7 +23,6 @@ type SeoRangeKey = "last_7_days" | "last_28_days";
 type SeoPrevRangeKey = "prev_7_days" | "prev_28_days";
 
 export function SeoLayout({ email }: { email: string }) {
-  const [search, setSearch] = useState("");
   const [range, setRange] = useState<SeoRangeKey>("last_28_days");
   const [compare, setCompare] = useState(false);
 
@@ -54,34 +53,7 @@ export function SeoLayout({ email }: { email: string }) {
       <div className="relative z-10">
         <FloatingSidebar />
 
-        {/* Top bar: title (left), SEO search + global user controls (right), no tabs */}
-        <motion.header
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="fixed top-6 left-4 right-4 z-40 lg:left-[272px] lg:right-10"
-        >
-          <div className="mx-auto flex max-w-[1131px] items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/65 px-6 py-2 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl dark:bg-white/[0.08] dark:shadow-[0_30px_80px_rgba(0,0,0,0.35)] lg:px-8">
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
-                SEO Intelligence
-              </p>
-            </div>
-            <div className="flex min-w-fit shrink-0 items-center gap-4">
-              <div className="relative hidden w-[150px] shrink-0 lg:block lg:w-[200px]">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
-                <input
-                  type="search"
-                  placeholder="Search SEO..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="w-full min-w-0 rounded-xl border border-white/10 bg-white/10 px-3 py-1.5 pl-9 pr-3 text-sm text-neutral-900 placeholder:text-neutral-500 transition-all duration-200 focus:border-[#0070ff] focus:outline-none focus:ring-2 focus:ring-[#0070ff] dark:border-white/10 dark:bg:white/10 dark:text-neutral-100 dark:placeholder:text-neutral-400"
-                />
-              </div>
-              <GlobalUserControls email={email} />
-            </div>
-          </div>
-        </motion.header>
+        <SeoTopBar email={email} range={range} seoData={seoData} />
 
         <div className="pl-4 pr-4 pt-[88px] pb-10 lg:pl-[272px] lg:pr-10 lg:pt-[88px]">
           <div className="h-[calc(100vh-5.5rem)] overflow-y-auto" role="main">
@@ -97,22 +69,19 @@ export function SeoLayout({ email }: { email: string }) {
                 </p>
               </header>
 
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="text-xs text-neutral-600 dark:text-neutral-400">
-                  <label className="mr-2 font-medium" htmlFor="seo-range-select">
-                    Date range:
-                  </label>
-                  <select
-                    id="seo-range-select"
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-3 text-xs text-neutral-600 dark:text-neutral-400">
+                  <span className="font-medium">Date range:</span>
+                  <Dropdown<SeoRangeKey>
                     value={range}
-                    onChange={(e) =>
-                      setRange(e.target.value as SeoRangeKey)
-                    }
-                    className="rounded-lg border border-white/10 bg-white px-3 py-1 text-xs text-neutral-900 shadow-sm outline-none transition-colors focus:border-[#0070ff] focus:ring-2 focus:ring-[#0070ff] dark:border-white/30 dark:bg-white dark:text-neutral-900"
-                  >
-                    <option value="last_7_days">Last 7 days</option>
-                    <option value="last_28_days">Last 28 days</option>
-                  </select>
+                    options={[
+                      { value: "last_7_days", label: "Last 7 days" },
+                      { value: "last_28_days", label: "Last 28 days" },
+                    ]}
+                    onChange={(v) => setRange(v)}
+                    ariaLabel="Date range"
+                    size="small"
+                  />
                 </div>
                 <label className="flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
                   <input

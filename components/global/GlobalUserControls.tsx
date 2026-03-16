@@ -63,7 +63,7 @@ export function GlobalUserControls({ email }: GlobalUserControlsProps) {
                 {email}
               </p>
               <Link
-                href="/dashboard/settings"
+                href="/settings"
                 className="block px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-black/5 dark:text-neutral-300 dark:hover:bg-white/10"
                 onClick={() => setUserOpen(false)}
               >

@@ -1,10 +1,11 @@
 import { redirect } from "next/navigation";
 import { getAuthToken } from "@/lib/auth-server";
 import { apiFetch } from "@/lib/api";
-import { PremiumDashboardLayout } from "../../components/dashboard/PremiumDashboardLayout";
-import { DashboardTopBar } from "@/components/topbar/DashboardTopBar";
+import { AppLayout } from "@/components/layout/AppLayout";
+import { AIStudioTopBar } from "@/components/topbar/AIStudioTopBar";
+import { AIStudioContent } from "@/features/ai-studio/components/AIStudioContent";
 
-export default async function DashboardPage() {
+export default async function AIStudioPage() {
   const token = await getAuthToken();
   if (!token) {
     redirect("/");
@@ -17,13 +18,15 @@ export default async function DashboardPage() {
       username = me.username;
     }
   } catch {
-    // If /api/me fails, keep fallback label but stay on dashboard
+    // keep fallback
   }
 
   return (
-    <PremiumDashboardLayout
+    <AppLayout
       email={username}
-      topBar={<DashboardTopBar email={username} />}
-    />
+      topBar={<AIStudioTopBar email={username} />}
+    >
+      <AIStudioContent />
+    </AppLayout>
   );
 }

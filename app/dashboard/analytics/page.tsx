@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getAuthToken } from "@/lib/auth-server";
 import { apiFetch } from "@/lib/api";
 import { PremiumDashboardLayout } from "../../../components/dashboard/PremiumDashboardLayout";
+import { DashboardTopBar } from "@/components/topbar/DashboardTopBar";
 import { AnalyticsOverview } from "../../../components/dashboard/analytics/AnalyticsOverview";
 import { PlatformDistribution } from "../../../components/dashboard/analytics/PlatformDistribution";
 import { MentionsTrend } from "../../../components/dashboard/analytics/MentionsTrend";
@@ -36,7 +37,10 @@ export default async function AnalyticsPage() {
   };
 
   return (
-    <PremiumDashboardLayout email={username}>
+    <PremiumDashboardLayout
+      email={username}
+      topBar={<DashboardTopBar email={username} />}
+    >
       <section className="mt-0">
         <h1 className="mb-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
           Analytics

@@ -9,9 +9,11 @@ import {
   LayoutDashboard,
   MessageSquare,
   UserCheck,
+  KeyRound,
   Swords,
+  Users,
+  Sparkles,
   FileBarChart,
-  Megaphone,
   Settings,
   LogOut,
 } from "lucide-react";
@@ -20,13 +22,15 @@ const mainNav = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/brand-analysis", label: "Brand Analysis", icon: MessageSquare },
   { href: "/seo", label: "SEO", icon: UserCheck },
-  { href: "/dashboard/competitors", label: "Competitors", icon: Swords },
-  { href: "/dashboard/campaigns", label: "Campaigns", icon: Megaphone },
-  { href: "/dashboard/reports", label: "Reports", icon: FileBarChart },
+  { href: "/keywords", label: "Keywords", icon: KeyRound },
+  { href: "/competitors", label: "Competitors", icon: Swords },
+  { href: "/influencers", label: "Influencers", icon: Users },
+  { href: "/ai-studio", label: "AI Studio", icon: Sparkles },
+  { href: "/reports", label: "Reports", icon: FileBarChart },
 ];
 
 const systemNav = [
-  { href: "/dashboard/settings", label: "Settings", icon: Settings },
+  { href: "/settings", label: "Settings", icon: Settings },
   { href: "/dashboard/logout", label: "Logout", icon: LogOut },
 ];
 
@@ -87,12 +91,12 @@ function Section({
       </p>
       <ul className="space-y-0.5">
         {items.map((item) => {
+          const exactOrChild =
+            pathname === item.href || pathname.startsWith(item.href + "/");
           const active =
             item.href === "/dashboard"
               ? pathname === "/dashboard" || pathname.startsWith("/dashboard/")
-              : item.href === "/seo"
-              ? pathname === "/seo" || pathname.startsWith("/seo")
-              : pathname === item.href || pathname.startsWith(item.href + "/");
+              : exactOrChild;
           return (
             <li key={item.href}>
               <NavItem

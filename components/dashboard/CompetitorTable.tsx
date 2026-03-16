@@ -3,14 +3,27 @@
 import { GlassCard } from "./GlassCard";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 
-const rows = [
-  { brand: "Your Brand", mentions: 12480, sentiment: 72, engagement: "2.4M", trend: "up" as const, trendValue: 12 },
-  { brand: "Competitor A", mentions: 9820, sentiment: 65, engagement: "1.8M", trend: "down" as const, trendValue: 3 },
-  { brand: "Competitor B", mentions: 7560, sentiment: 58, engagement: "1.2M", trend: "up" as const, trendValue: 8 },
-  { brand: "Competitor C", mentions: 5420, sentiment: 61, engagement: "980K", trend: "neutral" as const, trendValue: 0 },
+export type CompetitorRow = {
+  brand: string;
+  mentions: number;
+  sentiment: number;
+  engagement: string;
+  trend: "up" | "down" | "neutral";
+  trendValue: number;
+};
+
+const defaultRows: CompetitorRow[] = [
+  { brand: "Your Brand", mentions: 12480, sentiment: 72, engagement: "2.4M", trend: "up", trendValue: 12 },
+  { brand: "Competitor A", mentions: 9820, sentiment: 65, engagement: "1.8M", trend: "down", trendValue: 3 },
+  { brand: "Competitor B", mentions: 7560, sentiment: 58, engagement: "1.2M", trend: "up", trendValue: 8 },
+  { brand: "Competitor C", mentions: 5420, sentiment: 61, engagement: "980K", trend: "neutral", trendValue: 0 },
 ];
 
-export function CompetitorTable() {
+interface CompetitorTableProps {
+  rows?: CompetitorRow[];
+}
+
+export function CompetitorTable({ rows = defaultRows }: CompetitorTableProps) {
   return (
     <GlassCard noHover className="overflow-hidden p-0">
       <div className="border-b border-black/10 px-5 py-4 dark:border-white/10">

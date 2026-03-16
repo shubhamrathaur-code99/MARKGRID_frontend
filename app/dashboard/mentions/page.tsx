@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getAuthToken } from "@/lib/auth-server";
 import { apiFetch } from "@/lib/api";
 import { PremiumDashboardLayout } from "../../../components/dashboard/PremiumDashboardLayout";
+import { DashboardTopBar } from "@/components/topbar/DashboardTopBar";
 import { MentionsList } from "../../../components/dashboard/MentionsList";
 import mentionsData from "../../../data/mentions/dummy_mentions_neosapien.json";
 
@@ -31,7 +32,10 @@ export default async function MentionsPage() {
   }>;
 
   return (
-    <PremiumDashboardLayout email={username}>
+    <PremiumDashboardLayout
+      email={username}
+      topBar={<DashboardTopBar email={username} />}
+    >
       <section className="mt-0">
         <h1 className="mb-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
           Mentions

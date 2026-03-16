@@ -27,9 +27,11 @@ const mainVariants = {
 
 export function PremiumDashboardLayout({
   email,
+  topBar,
   children,
 }: {
   email: string;
+  topBar?: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -39,7 +41,7 @@ export function PremiumDashboardLayout({
         <FloatingSidebar />
         <div className="min-h-screen pl-4 pr-4 pt-[88px] pb-10 lg:pl-[272px] lg:pr-10 lg:pt-[88px]">
           <div className="mx-auto max-w-[1400px] px-6 py-10 lg:px-10">
-            <CommandNavbar email={email} />
+            {topBar ?? <CommandNavbar email={email} />}
             <motion.main
               variants={mainVariants}
               initial="hidden"
